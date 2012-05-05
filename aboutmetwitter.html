@@ -1,0 +1,24 @@
+{% if site.twitter_user %}
+<section>
+  <h1>About Me</h1>
+  <div id="twitter-profile" style="margin-top:0.5em;">
+    <strong><p>{{site.author}}</p></strong>
+    <p>{{site.description}}</p>
+  </div>
+  <script type="text/javascript">
+    $.domReady(function(){
+        var container = $('#twitter-profile'),
+            user = "{{site.twitter_user}}";
+            
+        $.ajax({
+            url: "http://api.twitter.com/1/users/show.json?include_entities=false&screen_name="+user+"&callback=?"
+          , type: 'jsonp'
+          , error: function (err) { $('#twitter-profile').addClass('error');  }
+          , success: function(data) {
+              container.html('<img class="left" src="http://api.twitter.com/1/users/profile_image/'+user+'.json?size=bigger" alt="@'+user+'"><p><strong>'+data.name+'</strong><br/>('+data.location+')</p><p>'+data.description+'</p>');
+            }
+        })
+      });
+  </script>
+</section>
+{% endif %}
