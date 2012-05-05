@@ -7,7 +7,7 @@ Twitter generated "about me" aside for [octopress](http://octopress.org/) bloggi
 
 1- Clone this repository into `{path to your octopress blog}/source/_includes/custom/asides/` folder (or simply download `aboutmetwitter.html` file into it):
 
-    > cd myOctopressBlog
+    # Assuming you're already in your octopress root folder
     > cd source/_includes/custom/asides
     > git clone git://github.com/dharFr/octo-about-me-from-twitter.git .
 
