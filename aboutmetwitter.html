@@ -9,7 +9,7 @@
     <p>{{site.description}}</p>
   </div>
   <script type="text/javascript">
-    $.domReady(function(){
+    $(function(){
         var container = $('#twitter-profile'),
             user = "{{site.twitter_user}}";
         
@@ -25,7 +25,8 @@
 
         $.ajax({
             url: "http://api.twitter.com/1/users/show.json?include_entities=false&screen_name="+user+"&callback=?"
-          , type: 'jsonp'
+          , type: 'GET'
+          , dataType: 'jsonp'
           , error: function (err) { $('#twitter-profile').addClass('error');  }
           , success: function(data) {
               container.html('<img class="left" src="http://api.twitter.com/1/users/profile_image/'+user+'.json?size=bigger" alt="@'+user+'"><p><strong>'+data.name+'</strong> (<a href="http://twitter.com/'+user+'">@'+user+'</a>)<br/>'+data.location+'</p><p>'+parseTwLinks(data.description)+'</p>');
